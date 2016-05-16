@@ -21,13 +21,14 @@ function iut_update_themes( $value, $transient ){
 		/* Active theme folder */
 		$this_theme = get_template();
 
-		/* This theme update data */
-		$update = array(
-			'theme'       => $this_theme,
-			'new_version' => '2.0.0',
-			'url'         => 'https://github.com/turtlepod/iut',
-			'package'     => 'https://github.com/turtlepod/iut/archive/master.zip',
-		);
+		/* Required */
+		$update = array();
+		$update['theme'] = $this_theme;
+		$update['new_version'] = '2.0.0';
+		$update['url'] = 'https://github.com/turtlepod/iut'; // can be empty.
+
+		/* Optional */
+		$update['package'] = 'https://github.com/turtlepod/iut/archive/master.zip';
 
 		/* Add to update data */
 		$value->response[$this_theme] = $update;
@@ -83,12 +84,3 @@ function iut_upgrader_source_selection( $source, $remote_source, $upgrader ){
 	}
 	return $source;
 }
-
-
-
-
-
-
-
-
-
